@@ -1,0 +1,20 @@
+# ansible-playbook -i localhost list.yaml
+- name: Print fruit names in debug
+  hosts: localhost
+  connection: local
+  vars:
+    fruits:
+      - name: apple
+        weight: 23
+      - name: pineapple
+        weight: 34
+  tasks:
+    - name: Print all fruits name
+      ansible.builtin.debug:
+        msg:
+          My fruits are {{item.name}} and my weight is {{item.weight}}
+      # loop:
+      #   - apple
+      #   - banane
+      #   - pineapple
+      loop: "{{fruits}}"
