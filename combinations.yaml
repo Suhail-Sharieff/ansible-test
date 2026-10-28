@@ -1,0 +1,9 @@
+- name: Gen combinations
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Give me combinations for sets of two
+      ansible.builtin.debug:
+        msg: "{{ [1,2,3,4,5] | ansible.builtin.combinations(2) | list }}"
+# => [(1, 2), (1, 3), (1, 4), (1, 5), (2, 3), (2, 4), (2, 5), (3, 4), (3, 5), (4, 5)]

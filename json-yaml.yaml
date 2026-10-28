@@ -12,7 +12,7 @@
     - name: Print as JSON
       ansible.builtin.debug:
         msg: 
-          As json {{fruits|to_json(indent=3)}}  ## or to nice_json
+          As json {{fruits|to_json(indent=3,ensure_ascii=True)}}  ## or to nice_json
     - name: Print as JSON
       ansible.builtin.debug:
         msg: 
