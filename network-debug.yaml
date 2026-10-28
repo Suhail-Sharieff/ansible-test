@@ -1,0 +1,11 @@
+- name: Just playing with some network utils
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Print my IP
+      vars:
+        some_ip: "192.198.9"
+      ansible.builtin.debug:
+        msg:
+          "My iP is {{ some_ip | ansible.utils.ipaddr }}" ## prints False
