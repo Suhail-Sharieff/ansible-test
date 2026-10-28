@@ -12,7 +12,7 @@
     - name: Print all fruits name
       ansible.builtin.debug:
         msg:
-          My fruits are {{item.name}} and my weight is {{item.weight}} and name data type is {{item.name|type_debug}} & data type is {{item.weight|type_debug}}
+          My fruits are {{item.name}} and my weight is {{item.weight}} and name data type is {{item.name|type_debug}} & data type is {{item.weight|type_debug}} 
       # loop:
       #   - apple
       #   - banane
