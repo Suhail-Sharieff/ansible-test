@@ -1,0 +1,19 @@
+- name: Conv json-yaml
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    - fruits: 
+        - name: apple
+          issweet: true
+        - name: tomato
+          issweet: false
+  tasks:
+    - name: Print as JSON
+      ansible.builtin.debug:
+        msg: 
+          As json {{fruits|to_json(indent=3)}}  ## or to nice_json
+    - name: Print as JSON
+      ansible.builtin.debug:
+        msg: 
+          As yaml {{fruits|to_nice_yaml}} 
