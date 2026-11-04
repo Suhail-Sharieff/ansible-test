@@ -1,2 +1,6 @@
 *.pem
 venv
+.terraform/
+*.hcl
+*.tfstate
+*.backup
