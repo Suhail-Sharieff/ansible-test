@@ -1,0 +1,14 @@
+# adhoc: ansible -i <inventory> -m ansible.builtin.shell -a 'chdir=/etc cat passwd' <groupName>
+- name: exec some shell commands in group1
+  hosts: group1
+  gather_facts: false
+  tasks:
+    - name: run echo cmd to print pwd
+      ansible.builtin.shell:
+        chdir: /etc
+        cmd: cat passwd
+      register: passwd_result
+    - name: show cmd output
+      ansible.builtin.debug:
+        var: passwd_result.stdout_lines
+

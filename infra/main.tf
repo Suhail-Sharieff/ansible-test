@@ -48,15 +48,34 @@ resource "aws_instance" "web01" {
         private_key = file("./suhai_aws_key.pem")
     }
     inline = [ 
-        "sudo apt update",
-        "sudo apt install apache2 -y",
-        "sudo systemctl restart apache2",
-        "sudo systemctl restart apache2"
+        "sudo apt update"
     ]
   }
 }
-output "print_ip" {
-    description = "ip addr of launched instance"
+resource "aws_instance" "web02" {
+  region = var.region
+  instance_type = var.instance_type
+  ami = var.ami
+  provider = aws.my-aws-provider
+  vpc_security_group_ids = [ aws_security_group.allow-ssh.id ]
+  key_name = "suhai_aws_key"
+  provisioner "remote-exec" {
+    connection {
+        host = self.public_ip
+        user = var.user
+        private_key = file("./suhai_aws_key.pem")
+    }
+    inline = [ 
+        "sudo apt update"
+    ]
+  }
+}
+output "ip_of_web01" {
+  description = "ip addr of web01"
   value = aws_instance.web01.public_ip
+}
+output "ip_of_web02" {
+  description = "ip addr of web02"
+  value = aws_instance.web02.public_ip
 }
 
