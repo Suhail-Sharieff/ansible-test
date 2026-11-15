@@ -1,0 +1,5 @@
+---
+- name: exec role1 playbook
+  hosts: group3
+  roles:
+    - role1

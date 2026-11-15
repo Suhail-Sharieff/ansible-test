@@ -1,0 +1,9 @@
+---
+# tasks file for role1
+- name: Install apache2
+  become: true
+  ansible.builtin.apt:
+    name: apache2
+    state: present
+  notify:
+    - Restart apache2

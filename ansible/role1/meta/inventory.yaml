@@ -1,0 +1,17 @@
+all:
+  hosts:
+    web01:
+      ansible_host: 54.173.46.126
+    web02:
+      ansible_host: 52.90.82.185
+  children:
+    group1:
+      hosts:
+        web01:
+    group2:
+      hosts:
+        web02:
+    group3:
+      children:
+        group1:
+        group2:
